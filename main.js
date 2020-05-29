@@ -85,7 +85,9 @@ function renderizaCarrinhoTotal() {
         total += carrinhoItens[produtoId].quantidade * carrinhoItens[produtoId].preco;
     }
 
-    document.querySelector('.carrinho-total').innerHTML = `<h6>Total: <strong>R$ ${total},00</strong></h6>`
+    total === 0 ?
+        document.querySelector('.carrinho-total').innerHTML = `<h6>Carrinho Vazio</h6>` :
+        document.querySelector('.carrinho-total').innerHTML = `<h6>Total: <strong>R$ ${total},00</strong></h6>`
 }
 
 
@@ -107,7 +109,9 @@ function removeItemCarrinho(elemento) {
 
     carrinhoItens[produtoId].quantidade <= 1 ?
         delete carrinhoItens[produtoId] : carrinhoItens[produtoId].quantidade--
-
+    
+    
+    
     renderizaCarrinho();
     renderizaCarrinhoTotal();
 }
